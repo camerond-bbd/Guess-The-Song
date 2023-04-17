@@ -1,0 +1,14 @@
+﻿<div>
+    <input @bind="ageInYears">
+    <label>Your age is @calculateAge() </label>
+</div>
+
+@code {
+    [Parameter]
+    public int ageInYears {get; set; }
+
+    public double calculateAge()
+    {
+        return ageInYears * 365.25;
+    }
+}
