@@ -39,12 +39,8 @@ CREATE TABLE lyrics (
 CREATE TABLE scores (
     score_id INT PRIMARY KEY IDENTITY(1,1),
     player_id INT NOT NULL,
-    song_id INT NOT NULL,
-    lyric_id INT NOT NULL,
     player_score BIT NOT NULL,
     FOREIGN KEY (player_id) REFERENCES players(player_id),
-    FOREIGN KEY (song_id) REFERENCES songs(song_id),
-    FOREIGN KEY (lyric_id) REFERENCES lyrics(lyric_id)
 );
 
 INSERT INTO artists ([name]) VALUES ('Ariana Grande');
@@ -106,26 +102,26 @@ INSERT INTO lyrics(song_id,lyric_text) VALUES(8,'Is it too late now to say sorry
 INSERT INTO lyrics(song_id,lyric_text) VALUES(9,'I can''t sleep until I feel your touch')
 INSERT INTO lyrics(song_id,lyric_text) VALUES(10,'Feelin'' good as hell')
 
-INSERT INTO scores (player_id,song_id,lyric_id,player_score)
-VALUES(1,1,1,0)
-INSERT INTO scores (player_id,song_id,lyric_id,player_score)
-VALUES(2,2,2,1)
-INSERT INTO scores (player_id,song_id,lyric_id,player_score)
-VALUES(3,3,3,0)
-INSERT INTO scores (player_id,song_id,lyric_id,player_score)
-VALUES(4,4,4,1)
-INSERT INTO scores (player_id,song_id,lyric_id,player_score)
-VALUES(5,5,5,0)
-INSERT INTO scores (player_id,song_id,lyric_id,player_score)
-VALUES(6,6,6,1)
-INSERT INTO scores (player_id,song_id,lyric_id,player_score)
-VALUES(7,7,7,0)
-INSERT INTO scores (player_id,song_id,lyric_id,player_score)
-VALUES(8,8,8,1)
-INSERT INTO scores (player_id,song_id,lyric_id,player_score)
-VALUES(9,9,9,0)
-INSERT INTO scores (player_id,song_id,lyric_id,player_score)
-VALUES(10,10,10,1)
+INSERT INTO scores (player_id,player_score)
+VALUES(1,0)
+INSERT INTO scores (player_id,player_score)
+VALUES(2,1)
+INSERT INTO scores (player_id,player_score)
+VALUES(3,0)
+INSERT INTO scores (player_id,player_score)
+VALUES(4,1)
+INSERT INTO scores (player_id,player_score)
+VALUES(5,0)
+INSERT INTO scores (player_id,player_score)
+VALUES(6,1)
+INSERT INTO scores (player_id,player_score)
+VALUES(7,0)
+INSERT INTO scores (player_id,player_score)
+VALUES(8,1)
+INSERT INTO scores (player_id,player_score)
+VALUES(9,0)
+INSERT INTO scores (player_id,player_score)
+VALUES(10,1)
 
 
 
