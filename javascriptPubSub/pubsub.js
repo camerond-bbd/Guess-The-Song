@@ -1,5 +1,6 @@
 export default class PubSub{
-  MethodsList = {};
+  MethodsList = {
+  };
 
   publish(Message,Value){
     if (this.MethodsList[Message]){

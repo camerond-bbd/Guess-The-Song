@@ -1,0 +1,24 @@
+﻿@using HowToBlazor.Utils;
+
+<h3>ActorAddComp</h3>
+<label>Actor Name</label>
+<input @bind="actorName" />
+<button @onclick="publishActor">@this.genButtonName()</button>
+
+@code {
+    public String actorName = "";
+    public String BtnName = "Publish Actor";
+    public int ClickCount = 0;
+    public string genButtonName()
+    {
+        
+        return $"{this.BtnName}: {this.ClickCount}";
+
+    }
+
+    public void publishActor()
+    {
+        this.ClickCount++;
+        PubSubManager.Publish("addedActor", actorName);
+    }
+}
