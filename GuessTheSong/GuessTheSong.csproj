@@ -8,8 +8,11 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="Components\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SongGame.Models\SongGame.Models.csproj" />
   </ItemGroup>
 
 </Project>
