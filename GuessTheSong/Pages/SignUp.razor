@@ -1,26 +1,21 @@
 ﻿@page "/sign-up"
 
 <PageTitle>Sign Up</PageTitle>
-
- 
     <main class="page">
-    <h2>Sign Up</h2>
-    <h3>Please enter new sign up details</h3>
-    <div class="login-section" >
-          
-    <label for="user-name">Enter your username: </label>
-        <input id="user-name" class="input" name="user-name" type="text" @bind="@password" required />
-       
-    <label for="new-password">Enter your password: </label>
-        <input id="new-password" class="input" name="new-password" type="password" required />
-        
-    </div>
+        <h2>Sign Up</h2>
+        <h3>Please enter new sign up details</h3>
+        <div class="login-section" >
 
-    @*<NavLink class="nav-link" href="index">*@
+        <label for="user-name">Enter your username: </label>
+            <input id="user-name" class="input" name="user-name" type="text" @bind="@password" required />
 
-    <button class="button" @onclick="signUpClick">Click to register</button>
-    @*</NavLink>*@
-    <input class="button" type="submit" value="Back" onClick="history.go(-1);">
-    <GuessTheSong.components.PopupMessage isDisplayingMessage="@displayError" errorMessage="@errorMessage"></GuessTheSong.components.PopupMessage>
+            <label for="new-password">Enter your password: </label>
+                <input id="new-password" class="input" name="new-password" type="password" required />
 
-    </main>   
+        </div>
+
+        <NavLink class="nav-link" href="index">
+        <input class="button" type="submit" value="Submit"/>
+        </NavLink>
+        <input class="button" type="submit" value="Back" onClick="history.go(-1);">
+    </main>
