@@ -57,5 +57,24 @@ namespace GuessTheSong.Utils
             Songs song = new Songs(result.songTitle, result.artistId, result.genreId);
             return song;
         }
+
+        public void addScore(bool wonRound,int player_id){
+        if(wonRound){
+            query = "INSERT INTO scores(player_score) VALUES(1)";
+        }else{
+            query = "INSERT INTO scores(player_score) VALUES(0)";
+        }
+        DatabaseHandler.execute(query);
+        }
+
+        public void AddPlayer(string username, string password){
+        string query = "INSERT INTO players (username,player_password) VALUES (\'"+username+"\',\'"+password"+\')";
+        DatabaseHandler.execute(query);
+        }
+        
+        public void RemovePlayer(string username) {
+            string query = "DELETE FROM players WHERE username = " + username;
+            DatabaseHandler.execute(query);
+        }
     }
 }
