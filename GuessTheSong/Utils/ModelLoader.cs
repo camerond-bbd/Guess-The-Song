@@ -7,7 +7,7 @@ namespace GuessTheSong.Utils
         static public Artists getArtist(int id)
         {
             string query = $"SELECT [name] FROM artists WHERE artist_id = {id}";
-            Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] { "name" }, query);
+            Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] { "name" }, query)!;
             //Artists artist = new Artists((string)result["name"],id);
             Artists artists = new Artists();
             artists.artist_id = id;
@@ -18,7 +18,7 @@ namespace GuessTheSong.Utils
         static public Genres getGenre(int id)
         {
             string query = $"SELECT [name] FROM genres WHERE genre_id = {id}";
-            Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] { "name" }, query);
+            Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] { "name" }, query)!;
             Genres genre = new Genres();
             genre.name = (string)result["name"];
             genre.genre_id = id;
@@ -28,7 +28,7 @@ namespace GuessTheSong.Utils
         static public Lyrics getLyrics(int id)
         {
             string query = $"SELECT lyric_text FROM lyrics WHERE lyric_id = {id}";
-            Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] { "lyric_text" }, query);
+            Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] { "lyric_text" }, query)!;
             Lyrics lyrics = new Lyrics();
             lyrics.lyric_id = id;
             lyrics.lyric_text = (string)result["lyric_text"];
@@ -38,7 +38,7 @@ namespace GuessTheSong.Utils
         static public Players getPlayers(int id)
         {
             string query = $"SELECT username FROM players WHERE player_id = {id}";
-            Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] { "username" }, query);
+            Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] { "username" }, query)!;
             Players players = new Players();
             players.username = (string) result["username"];
             players.player_id = id;
@@ -48,7 +48,7 @@ namespace GuessTheSong.Utils
         static public Scores getScore(int player_id)
         {
             string query = $"SELECT COUNT(player_score) AS tot_player_score FROM scores WHERE player_id = {player_id}";
-            Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] {"tot_player_score"}, query);
+            Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] {"tot_player_score"}, query)!;
             Scores scores = new Scores();
             scores.player_id = player_id;
             scores.player_score = (int)result["tot_player_score"];
@@ -58,8 +58,8 @@ namespace GuessTheSong.Utils
         static public Songs getSongs(int id)
         {
             string query = $"SELECT title, artist_id, genre_id FROM songs WHERE song_id = {id}";
-            Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] {"title","artist_id","genre_id"}, query);
-            result = DatabaseConnectionManager.doQuery(new string[] { "title", "artist_id", "genre_id" }, query);
+            Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] {"title","artist_id","genre_id"}, query)!;
+            //result = DatabaseConnectionManager.doQuery(new string[] { "title", "artist_id", "genre_id" }, query)!;
             Songs song = new Songs();
             song.song_id = id;
             song.title = (string)result["title"];
@@ -93,9 +93,37 @@ namespace GuessTheSong.Utils
         {
             string query = $"DELETE FROM players WHERE username = {username}";
             DatabaseConnectionManager.executeQuery(query);
-         }
+        }
 
+        static public string getUserDetails(string username, string password)
+        {
+            string query = $"SELECT password FROM players WHERE username = {username}";
+            Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] { "password" }, query)!;
+            return (string)result["password"];
+        }
+        
+        static public bool getValidUser(string username, string password)
+        {
+            string query = $"SELECT * FROM players WHERE (username = '{username}') AND (player_password = '{Encryption.encrypt(password)}')";
+            return DatabaseConnectionManager.rowCount(query) == 1;
+        }
 
+        static public bool isUserInDatabase(string username)
+        {
+            string query = $"SELECT * FROM players WHERE (username = '{username}')";
+            return DatabaseConnectionManager.rowCount(query) == 1;
+        }
 
+        static public Players getPlayer(string username, string password)
+        {
+            Players returnMe = new Players();
+            string query = $"SELECT player_id,username,player_password FROM players WHERE (username = '{username}') AND (player_password = '{Encryption.encrypt(password)}')";
+            string[] fields = new string[] { "Id","username","password" };
+            Dictionary<string, object> result = DatabaseConnectionManager.doQuery(fields, query)!;
+            returnMe.username = (string)result["username"];
+            returnMe.player_id = (int)result["Id"];
+            returnMe.player_password = (string)result["password"];
+            return returnMe; 
+        }
     }
 }

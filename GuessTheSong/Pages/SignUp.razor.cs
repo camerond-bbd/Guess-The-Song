@@ -1,6 +1,7 @@
 ﻿using GuessTheSong.components;
 using GuessTheSong.Utils;
-using GuessTheSong.Utils;
+using Microsoft.AspNetCore.Components.Routing;
+using SongGame.Models;
 
 namespace GuessTheSong.Pages
 {
@@ -17,7 +18,7 @@ namespace GuessTheSong.Pages
                 errorMessage = "Password is too short";
                 displayError = true;
 
-                PubSubManager.Publish<PopupMessage.errorObject>("displayErrorMessage", new PopupMessage.errorObject(errorMessage,displayError));
+                PubSubManager.Publish<PopupMessage.errorObject>("displayErrorMessage", new PopupMessage.errorObject(errorMessage, displayError, () => { }));
                 return;
             }
 
@@ -25,14 +26,31 @@ namespace GuessTheSong.Pages
             {
                 errorMessage = "Username is too short";
                 displayError = true;
-                PubSubManager.Publish<PopupMessage.errorObject>("displayErrorMessage", new PopupMessage.errorObject(errorMessage, displayError));
+                PubSubManager.Publish<PopupMessage.errorObject>("displayErrorMessage", new PopupMessage.errorObject(errorMessage, displayError, () => { }));
+                return;
+            }
+            if (ModelLoader.isUserInDatabase(username))
+            {
+                errorMessage = "Username is already in use";
+                displayError = true;
+                
+                PubSubManager.Publish<PopupMessage.errorObject>("displayErrorMessage", new PopupMessage.errorObject(errorMessage, displayError, () => {}));
+                username = "";
+                password = "";
                 return;
             }
 
             ModelLoader.AddPlayer(username, Encryption.encrypt(password));
             errorMessage = "Username was registered successfully";
             displayError = true;
-            PubSubManager.Publish<PopupMessage.errorObject>("displayErrorMessage", new PopupMessage.errorObject(errorMessage, displayError));
+
+            Players signedInPlayer = ModelLoader.getPlayer(username, password);
+
+            PubSubManager.Publish<PopupMessage.errorObject>("displayErrorMessage", new PopupMessage.errorObject(errorMessage, displayError, () =>
+            {
+                Navigation.NavigateTo($"/Profile/{signedInPlayer.player_id}");
+            }));
+            
         }
     }
 }

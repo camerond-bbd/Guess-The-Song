@@ -1,5 +1,5 @@
 ﻿@page "/sign-up"
-
+@inject NavigationManager Navigation
 <PageTitle>Sign Up</PageTitle>
     <main class="page">
         <h2>Sign Up</h2>
@@ -14,8 +14,8 @@
 
         </div>
 
-
-    <button class="button" @onclick="signUpClick">Register</button>
-        <input class="button" type="submit" value="Back" onClick="history.go(-1);">
+        <button class="button" @onclick="signUpClick">Register</button>
+        <button class="button" onClick="history.go(-1);">back</button>
+    
         <GuessTheSong.components.PopupMessage errorMessage="@errorMessage" isDisplayingMessage="@displayError"></GuessTheSong.components.PopupMessage>
     </main>
