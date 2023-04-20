@@ -54,5 +54,26 @@ namespace GuessTheSong.Utils
             conn.Close();
             return totalEffected;
         }
+
+        public static Dictionary<string, object>[] getMulti(string[] Fields, string Query)
+        {
+            List<Dictionary<string, object>> lstDicts = new List<Dictionary<string, object>>();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(Query, conn);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Dictionary<string, object> record = new Dictionary<string, object>();
+                for (int i = 0; i < Fields.Length; i++)
+                {
+                    record.Add(Fields[i], reader.GetValue(i));
+                }
+                lstDicts.Add(record);
+            }
+
+            conn.Close();
+            return lstDicts.ToArray();
+        }
     }
 }
