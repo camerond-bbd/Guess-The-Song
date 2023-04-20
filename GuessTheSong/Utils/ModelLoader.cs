@@ -1,4 +1,4 @@
-using DatabaseHandler;
+
 using SongGame.Models;
 
 
@@ -6,21 +6,25 @@ namespace GuessTheSong.Utils
 {
     public class ModelLoader
     {
-       public Artists getArtist(string id){
-        Dictionary<string, string> result = new Dictionary<string, string>();
-        string query = "SELECT [name] FROM artists WHERE artist_id = " + id;
-        result = DatabaseHandler.execute(query);
-        Artists artist = new Artists(result.name);
-        return artist;
-       }
+        public Artists getArtist(int id)
+        {
+            string query = "SELECT [name] FROM artists WHERE artist_id = " + id;
+            Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] { "name" }, query);
+            //Artists artist = new Artists((string)result["name"],id);
+            Artists artists = new Artists();
+            artists.artist_id = id;
+            artists.name = (string)result["name"];
+            return artists;
+        }
 
-       public Genres getGenre(string id){
+        public Genres getGenre(string id)
+        {
             Dictionary<string, string> result = new Dictionary<string, string>();
             string query = "SELECT name FROM genres WHERE genre_id = " + id;
             result = DatabaseHandler.execute(query);
             Genres genres = new Genres(result.name);
             return genres;
-       }
+        }
 
         public Lyrics getLyrics(string id)
         {
@@ -58,21 +62,27 @@ namespace GuessTheSong.Utils
             return song;
         }
 
-        public void addScore(bool wonRound,int player_id){
-        if(wonRound){
-            query = "INSERT INTO scores(player_score) VALUES(1)";
-        }else{
-            query = "INSERT INTO scores(player_score) VALUES(0)";
-        }
-        DatabaseHandler.execute(query);
+        public void addScore(bool wonRound, int player_id)
+        {
+            if (wonRound)
+            {
+                query = "INSERT INTO scores(player_score) VALUES(1)";
+            }
+            else
+            {
+                query = "INSERT INTO scores(player_score) VALUES(0)";
+            }
+            DatabaseHandler.execute(query);
         }
 
-        public void AddPlayer(string username, string password){
-        string query = "INSERT INTO players (username,player_password) VALUES (\'"+username+"\',\'"+password"+\')";
-        DatabaseHandler.execute(query);
+        public void AddPlayer(string username, string password)
+        {
+            string query = $"INSERT INTO players (username,player_password) VALUES ('{username}','{password}')";
+            DatabaseHandler.execute(query);
         }
-        
-        public void RemovePlayer(string username) {
+
+        public void RemovePlayer(string username)
+        {
             string query = "DELETE FROM players WHERE username = " + username;
             DatabaseHandler.execute(query);
         }
