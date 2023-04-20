@@ -18,16 +18,16 @@ namespace GuessTheSong.Utils
         Dictionary<string, string> result = new Dictionary<string, string>();
         String query = "SELECT name FROM artists WHERE artist_id = " + id;
         result = DatabaseHandler.execute(query);
-        Artist artist = new Artist(result.id, result.name)
-        return artist
+        Artists artist = new Artist(result.id, result.name);
+        return artist;
        }
 
        public Genres getGenre(String id){
        Dictionary<string, string> result = new Dictionary<string, string>();
         String query = "SELECT name FROM artists WHERE artist_id = " + id;
         result = DatabaseHandler.execute(query);
-        Artist artist = new Artist(result.id, result.name)
-        return artist
+        Artist artist = new Artist(result.id, result.name);
+        return artist;
        }
 
 
