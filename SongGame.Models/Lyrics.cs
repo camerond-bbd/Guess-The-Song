@@ -6,8 +6,7 @@
         public int song_id { get; set; }
         public string lyric_text { get; set; }
        
-        public Lyrics (int songId, string lyricText) {
-            song_id = songId;
+        public Lyrics (string lyricText) {
             lyric_text = lyricText; 
         }
     }
