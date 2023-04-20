@@ -101,5 +101,11 @@ namespace GuessTheSong.Utils
             Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] { "password" }, query);
             return (string)result["password"];
         }
+        
+        static public bool getValidUser(string username, string password)
+        {
+            string query = $"SELECT * FROM players WHERE (username = '{username}') AND (player_password = '{Encryption.encrypt(password)}')";
+            return DatabaseConnectionManager.rowCount(query) == 1;
+        }
     }
 }

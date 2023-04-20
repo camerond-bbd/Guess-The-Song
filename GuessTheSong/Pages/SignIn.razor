@@ -9,10 +9,10 @@
     <div class="login-section">
 
         <label for="user-name">Enter your username: </label>
-        <input id="user-name" class="input" name="user-name" type="text" required />
+        <input id="user-name" class="input" name="user-name" type="text" @bind="@username" required />
 
         <label for="new-password">Enter your password: </label>
-        <input id="new-password" class="input" name="new-password" type="password" required />
+        <input id="new-password" class="input" name="new-password" type="password" @bind="@password" required />
 
     </div>
 

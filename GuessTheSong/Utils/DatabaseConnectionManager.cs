@@ -75,5 +75,28 @@ namespace GuessTheSong.Utils
             conn.Close();
             return lstDicts.ToArray();
         }
+
+        public static int rowCount(string Query)
+        {
+            conn.Open();
+            int rowCount = 0;
+            SqlCommand cmd = new SqlCommand(Query, conn);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (!reader.HasRows)
+            {
+                conn.Close();
+                return 0;
+            }
+                
+
+            while (reader.Read())
+            {
+                rowCount++;
+            }
+            conn.Close();
+
+            return rowCount;
+        }
     }
 }

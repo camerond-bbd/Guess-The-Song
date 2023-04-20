@@ -11,25 +11,27 @@ namespace GuessTheSong.Pages
         public string errorMessage = "";
         public void signInClick()
         {
-            ModelLoader.getUserDetails(username, password);
-
-            if (password)
+            if (password.Length < 4)
             {
-                errorMessage = "Password is incorrect";
+                errorMessage = "Password is invalid";
                 displayError = true;
 
                 PubSubManager.Publish<PopupMessage.errorObject>("displayErrorMessage", new PopupMessage.errorObject(errorMessage, displayError));
                 return;
             }
-            else if (username)
+            if (username.Length < 4)
             {
-                errorMessage = "Username is incorrect";
+                errorMessage = "Username is invalid";
                 displayError = true;
                 PubSubManager.Publish<PopupMessage.errorObject>("displayErrorMessage", new PopupMessage.errorObject(errorMessage, displayError));
                 return;
-            } else
+            }
+            if (ModelLoader.getValidUser(username, password))
             {
-
+                errorMessage = "Username successfully logged in";
+                displayError = true;
+                PubSubManager.Publish<PopupMessage.errorObject>("displayErrorMessage", new PopupMessage.errorObject(errorMessage, displayError));
+                return;
             }
         }
     }
