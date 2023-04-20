@@ -2,7 +2,7 @@
 {
     public class Players
     {
-        public int player_id { get; }
+        public int player_id { get; set; }
         public string username { get; set; }
         public string player_password { get; set; }
 

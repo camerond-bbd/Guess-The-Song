@@ -2,7 +2,7 @@
 {
     public class Songs
     {
-        public int song_id { get; }
+        public int song_id { get; set; }
         public string title { get; set; }
         public int artist_id { get; set; }
         public int genre_id { get; set; }

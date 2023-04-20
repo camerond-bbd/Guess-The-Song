@@ -15,7 +15,7 @@ namespace GuessTheSong.Utils
             return artists;
         }
 
-        public Genres getGenre(string id)
+        public Genres getGenre(int id)
         {
             string query = $"SELECT [name] FROM genres WHERE genre_id = {id}";
             Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] { "name" }, query);
@@ -31,7 +31,7 @@ namespace GuessTheSong.Utils
             Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] { "lyric_text" }, query);
             Lyrics lyrics = new Lyrics();
             lyrics.lyric_id = id;
-            lyrics.lyric_text = result["lyric_text"];
+            lyrics.lyric_text = (string)result["lyric_text"];
             return lyrics;
         }
 
@@ -47,11 +47,11 @@ namespace GuessTheSong.Utils
 
         public Scores getScore(int player_id)
         {
-            string query = $"SELECT COUNT(player_score) AS tot_player_score  FROM scores WHERE player_id = {id}";
+            string query = $"SELECT COUNT(player_score) AS tot_player_score FROM scores WHERE player_id = {player_id}";
             Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] {"tot_player_score"}, query);
             Scores scores = new Scores();
             scores.player_id = player_id;
-            scores.player_score = result.tot_player_score;
+            scores.player_score = (int)result["tot_player_score"];
             return scores;
         }
 
@@ -59,17 +59,19 @@ namespace GuessTheSong.Utils
         {
             string query = $"SELECT title, artist_id, genre_id FROM songs WHERE song_id = {id}";
             Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] {"title","artist_id","genre_id"}, query);
-            result = DatabaseConnectionManager.doQuery(query);
+            result = DatabaseConnectionManager.doQuery(new string[] { "title", "artist_id", "genre_id" }, query);
             Songs song = new Songs();
             song.song_id = id;
-            song.title = result["title"];
-            song.artist_id = result["artist_id"];
-            song.genre_id = result["genre_id"];
+            song.title = (string)result["title"];
+            song.artist_id = (int)result["artist_id"];
+            song.genre_id = (int)result["genre_id"];
             return song;
         }
 
         public void addScore(bool wonRound, int player_id)
         {
+            string query;
+
             if (wonRound)
             {
                 query = "INSERT INTO scores(player_score) VALUES(1)";
