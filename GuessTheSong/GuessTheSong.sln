@@ -5,8 +5,6 @@ VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuessTheSong", "GuessTheSong.csproj", "{B2380993-2065-4EC9-B3D4-244A2F81B882}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SongGame.Models", "..\SongGame.Models\SongGame.Models.csproj", "{5D23406A-D84B-47D4-957E-BDC5B41ACF5F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
