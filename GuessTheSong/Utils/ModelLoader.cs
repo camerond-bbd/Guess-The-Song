@@ -67,14 +67,12 @@ namespace GuessTheSong.Utils
         DatabaseHandler.execute(query);
         }
 
-        public void AddPlayer(string username, string password){
-        string query = "INSERT INTO players (username,player_password) VALUES (\'"+username+"\',\'"+password"+\')";
-        DatabaseHandler.execute(query);
-        }
-        
-        public void RemovePlayer(string username) {
-            string query = "DELETE FROM players WHERE username = " + username;
+         public void AddPlayer(string username, string password){
+            string query = $"INSERT INTO players (username,player_password) VALUES ('{username}','{password}')";
             DatabaseHandler.execute(query);
-        }
+         }
+
+
+
     }
 }
