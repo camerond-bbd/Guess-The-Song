@@ -5,3 +5,20 @@
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+
+        <NavLink class="nav-link" href="sign-up">
+            <button > Register </button>
+            </NavLink>
+
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+    }
+}
+
+
