@@ -1,0 +1,33 @@
+
+:root {
+    --san-marino: #5c74b3;
+    --revolver: #1b132c;
+    --waikawa-gray: #5463a3;
+    --energy-yellow: #f8dd57;
+    --tacao: #f3a481;
+    --strikemaster: #935393;
+    --affair: #7c4382;
+    --bossanova: #433366;
+    --chambray: #3c508c;
+     font-family : 'Comic Sans MS';
+    --edgeRounding: 20px;
+}
+
+#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+    #blazor-error-ui .dismiss {
+        cursor: pointer;
+        position: absolute;
+        right: 0.75rem;
+        top: 0.5rem;
+    }

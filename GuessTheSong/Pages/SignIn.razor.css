@@ -1,0 +1,59 @@
+﻿.page {
+    font-family: 'Comic Sans MS';
+    background-color: #5c71b2;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content : center;
+}
+
+
+.login-section {
+    display: flex;
+    flex-direction: column;
+    outline: none;
+    width : 35vw;
+    font-size: 20px;
+    align-items : center;
+}
+
+.form {
+    display : flex;
+
+    align-items : center;
+    flex-direction : column;
+    padding : 5rem;
+}
+
+.button {
+    background-color: #f8dd57;
+    padding: 15px 32px;
+    margin: 15px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    font-family: 'Comic Sans MS';
+    border-radius: 16px;
+    font-size: large;
+    width: 25vw;
+    align-self: center;
+    
+   
+   
+}
+
+.input {
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    font-family: 'Comic Sans MS';
+    border-radius: 16px;
+    font-size: large;
+    width: 20vw;
+}

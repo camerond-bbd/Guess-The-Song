@@ -8,8 +8,16 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="Components\" />
     <Folder Include="Models\" />
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SongGame.Models\SongGame.Models.csproj" />
   </ItemGroup>
 
 </Project>

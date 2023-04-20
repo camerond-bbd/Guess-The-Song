@@ -1,0 +1,11 @@
+﻿.backdrop{
+    display:flex;
+    position:absolute;
+    width:100vw;
+    height:100vh;
+    background-color:rgba(70,70,70,0.5);
+}
+
+.noDisplay{
+    display:none;
+}
