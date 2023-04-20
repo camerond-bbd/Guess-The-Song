@@ -1,24 +1,21 @@
 ﻿@page "/sign-up"
 
 <PageTitle>Sign Up</PageTitle>
-
- 
     <main class="page">
-    <h2>Sign Up</h2>
-    <h3>Please enter new sign up details</h3>
-    <form class="form" method="post" action=''>
-      <div class="login-section" >
-          
+        <h2>Sign Up</h2>
+        <h3>Please enter new sign up details</h3>
+        <div class="login-section" >
+
         <label for="user-name">Enter your username: </label>
-        <input id="user-name" class="input" name="user-name" type="text" required />
-       
-        <label for="new-password">Enter your password: </label>
-            <input id="new-password" class="input" name="new-password" type="password" required="" />
-        
-      </div>
+            <input id="user-name" class="input" name="user-name" type="text" @bind="@password" required />
 
+            <label for="new-password">Enter your password: </label>
+                <input id="new-password" class="input" name="new-password" type="password" required />
 
-      <input class="button" type="submit" value="Submit" />
-      <input class="button" type="submit" value="Back" onClick="history.go(-1);">
-    </form>
-    </main>   
+        </div>
+
+        <NavLink class="nav-link" href="index">
+        <input class="button" type="submit" value="Submit"/>
+        </NavLink>
+        <input class="button" type="submit" value="Back" onClick="history.go(-1);">
+    </main>

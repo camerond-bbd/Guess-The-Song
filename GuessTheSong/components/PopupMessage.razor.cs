@@ -4,13 +4,19 @@ namespace GuessTheSong.components
 {
     public partial class PopupMessage
     {
-        public string errorMessage = "";
+        [Parameter]
+        public string errorMessage { get; set; } = "";
         
         [Parameter]
         public bool isDisplayingMessage { get; set; }
         public string getClasses()
         {
-            return (isDisplayingMessage) ? $"popupMessage" : $"popupMessage noDisplay";
+            return (isDisplayingMessage) ? $"backdrop" : $"backdrop noDisplay";
+        }
+
+        public void onclick()
+        {
+            this.isDisplayingMessage = false;
         }
     }
 }
