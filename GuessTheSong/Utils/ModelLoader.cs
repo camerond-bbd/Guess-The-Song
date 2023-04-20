@@ -15,7 +15,7 @@ namespace GuessTheSong.Utils
             return artists;
         }
 
-        public Genres getGenre(string id)
+        public Genres getGenre(int id)
         {
             string query = $"SELECT [name] FROM genres WHERE genre_id = {id}";
             Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] { "name" }, query);
