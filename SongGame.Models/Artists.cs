@@ -6,7 +6,12 @@
         public string name { get; set; }
        
 
-        public Artists (string artistName)
+        public Artists()
+        {
+            artist_id = 0;
+            name= string.Empty;
+        }
+        public Artists (string artistName, int artist_id)
         {
             name = artistName;
         }
