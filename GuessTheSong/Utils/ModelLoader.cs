@@ -16,9 +16,9 @@ namespace GuessTheSong.Utils
 
        public Artists getArtist(String id){
         Dictionary<string, string> result = new Dictionary<string, string>();
-        String query = "SELECT name FROM artists WHERE artist_id = " + id;
+        String query = "SELECT [name] FROM artists WHERE artist_id = " + id;
         result = DatabaseHandler.execute(query);
-        Artists artist = new Artist(result.id, result.name);
+        Artists artist = new Artist(result.name);
         return artist;
        }
 
