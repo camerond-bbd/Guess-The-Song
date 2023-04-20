@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bbdnet2745\\Desktop\\GradProjects\\GuessTheSong\\Guess-The-Song\\GuessTheSong\\GuessTheSong.csproj": {}
+    "C:\\Users\\nunem001\\Desktop\\Grad Project\\Guess-The-Song\\GuessTheSong\\GuessTheSong.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bbdnet2745\\Desktop\\GradProjects\\GuessTheSong\\Guess-The-Song\\GuessTheSong\\GuessTheSong.csproj": {
+    "C:\\Users\\nunem001\\Desktop\\Grad Project\\Guess-The-Song\\GuessTheSong\\GuessTheSong.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bbdnet2745\\Desktop\\GradProjects\\GuessTheSong\\Guess-The-Song\\GuessTheSong\\GuessTheSong.csproj",
+        "projectUniqueName": "C:\\Users\\nunem001\\Desktop\\Grad Project\\Guess-The-Song\\GuessTheSong\\GuessTheSong.csproj",
         "projectName": "GuessTheSong",
-        "projectPath": "C:\\Users\\bbdnet2745\\Desktop\\GradProjects\\GuessTheSong\\Guess-The-Song\\GuessTheSong\\GuessTheSong.csproj",
-        "packagesPath": "C:\\Users\\bbdnet2745\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bbdnet2745\\Desktop\\GradProjects\\GuessTheSong\\Guess-The-Song\\GuessTheSong\\obj\\",
+        "projectPath": "C:\\Users\\nunem001\\Desktop\\Grad Project\\Guess-The-Song\\GuessTheSong\\GuessTheSong.csproj",
+        "packagesPath": "C:\\Users\\nunem001\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nunem001\\Desktop\\Grad Project\\Guess-The-Song\\GuessTheSong\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\bbdnet2745\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nunem001\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,12 +44,6 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "dependencies": {
-            "SpotifyAPI.Web": {
-              "target": "Package",
-              "version": "[7.0.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -61,24 +55,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.16, 6.0.16]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[6.0.16, 6.0.16]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.16, 6.0.16]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.16, 6.0.16]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
