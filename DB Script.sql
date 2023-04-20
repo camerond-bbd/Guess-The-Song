@@ -16,8 +16,8 @@ CREATE TABLE genres (
 
 CREATE TABLE players (
     player_id INT PRIMARY KEY IDENTITY(1,1),
-    username VARCHAR(255) NOT NULL
-	player_password 
+    username VARCHAR(255) NOT NULL,
+	player_password VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE songs (
