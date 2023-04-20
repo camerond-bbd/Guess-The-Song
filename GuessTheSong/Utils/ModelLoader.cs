@@ -93,9 +93,13 @@ namespace GuessTheSong.Utils
         {
             string query = $"DELETE FROM players WHERE username = {username}";
             DatabaseConnectionManager.executeQuery(query);
-         }
+        }
 
-
-
+        static public string getUserDetails(string username, string password)
+        {
+            string query = $"SELECT password FROM players WHERE username = {username}";
+            Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] { "password" }, query);
+            return (string)result["password"];
+        }
     }
 }
