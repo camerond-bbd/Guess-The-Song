@@ -1,4 +1,8 @@
-﻿namespace GuessTheSong.Pages
+﻿using GuessTheSong.components;
+using GuessTheSong.Utils;
+using GuessTheSong.Utils;
+
+namespace GuessTheSong.Pages
 {
     public partial class SignUp
     {
@@ -12,6 +16,8 @@
             {
                 errorMessage = "Password is too short";
                 displayError = true;
+
+                PubSubManager.Publish<PopupMessage.errorObject>("displayErrorMessage", new PopupMessage.errorObject(errorMessage,displayError));
                 return;
             }
 
@@ -19,8 +25,14 @@
             {
                 errorMessage = "Username is too short";
                 displayError = true;
+                PubSubManager.Publish<PopupMessage.errorObject>("displayErrorMessage", new PopupMessage.errorObject(errorMessage, displayError));
                 return;
             }
+
+            ModelLoader.AddPlayer(username, Encryption.encrypt(password));
+            errorMessage = "Username was registered successfully";
+            displayError = true;
+            PubSubManager.Publish<PopupMessage.errorObject>("displayErrorMessage", new PopupMessage.errorObject(errorMessage, displayError));
         }
     }
 }

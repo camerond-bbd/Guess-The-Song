@@ -1,4 +1,4 @@
-﻿namespace HowToBlazor.Utils
+﻿namespace GuessTheSong.Utils
 {
     public static class PubSubManager
     {

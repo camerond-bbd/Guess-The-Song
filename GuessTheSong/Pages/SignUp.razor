@@ -7,15 +7,15 @@
         <div class="login-section" >
 
         <label for="user-name">Enter your username: </label>
-            <input id="user-name" class="input" name="user-name" type="text" @bind="@password" required />
+        <input id="user-name" class="input" name="user-name" type="text" @bind="@username" required />
 
             <label for="new-password">Enter your password: </label>
-                <input id="new-password" class="input" name="new-password" type="password" required />
+        <input id="new-password" class="input" name="new-password" type="password" @bind="@password" required />
 
         </div>
 
-        <NavLink class="nav-link" href="index">
-        <input class="button" type="submit" value="Submit"/>
-        </NavLink>
+
+    <button class="button" @onclick="signUpClick">Register</button>
         <input class="button" type="submit" value="Back" onClick="history.go(-1);">
+        <GuessTheSong.components.PopupMessage errorMessage="@errorMessage" isDisplayingMessage="@displayError"></GuessTheSong.components.PopupMessage>
     </main>

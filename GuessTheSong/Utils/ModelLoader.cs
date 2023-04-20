@@ -2,9 +2,9 @@ using SongGame.Models;
 
 namespace GuessTheSong.Utils
 {
-    public class ModelLoader
+    public static class ModelLoader
     {
-        public Artists getArtist(int id)
+        static public Artists getArtist(int id)
         {
             string query = $"SELECT [name] FROM artists WHERE artist_id = {id}";
             Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] { "name" }, query);
@@ -15,7 +15,7 @@ namespace GuessTheSong.Utils
             return artists;
         }
 
-        public Genres getGenre(int id)
+        static public Genres getGenre(int id)
         {
             string query = $"SELECT [name] FROM genres WHERE genre_id = {id}";
             Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] { "name" }, query);
@@ -25,7 +25,7 @@ namespace GuessTheSong.Utils
             return genre;
         }
 
-        public Lyrics getLyrics(int id)
+        static public Lyrics getLyrics(int id)
         {
             string query = $"SELECT lyric_text FROM lyrics WHERE lyric_id = {id}";
             Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] { "lyric_text" }, query);
@@ -35,7 +35,7 @@ namespace GuessTheSong.Utils
             return lyrics;
         }
 
-        public Players getPlayers(int id)
+        static public Players getPlayers(int id)
         {
             string query = $"SELECT username FROM players WHERE player_id = {id}";
             Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] { "username" }, query);
@@ -45,7 +45,7 @@ namespace GuessTheSong.Utils
             return players;
         }
 
-        public Scores getScore(int player_id)
+        static public Scores getScore(int player_id)
         {
             string query = $"SELECT COUNT(player_score) AS tot_player_score FROM scores WHERE player_id = {player_id}";
             Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] {"tot_player_score"}, query);
@@ -55,7 +55,7 @@ namespace GuessTheSong.Utils
             return scores;
         }
 
-        public Songs getSongs(int id)
+        static public Songs getSongs(int id)
         {
             string query = $"SELECT title, artist_id, genre_id FROM songs WHERE song_id = {id}";
             Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] {"title","artist_id","genre_id"}, query);
@@ -68,7 +68,7 @@ namespace GuessTheSong.Utils
             return song;
         }
 
-        public void addScore(bool wonRound, int player_id)
+        static public void addScore(bool wonRound, int player_id)
         {
             string query;
 
@@ -83,13 +83,13 @@ namespace GuessTheSong.Utils
             DatabaseConnectionManager.executeQuery(query); //handle should we get false returned 
         }
 
-        public void AddPlayer(string username, string password)
+        static public void AddPlayer(string username, string password)
         {
             string query = $"INSERT INTO players (username,player_password) VALUES ('{username}','{password}')";
             DatabaseConnectionManager.executeQuery(query);
         }
 
-        public void RemovePlayer(string username)
+        static public void RemovePlayer(string username)
         {
             string query = $"DELETE FROM players WHERE username = {username}";
             DatabaseConnectionManager.executeQuery(query);
