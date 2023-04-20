@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace HowToBlazor.Utils
+namespace GuessTheSong.Utils
 {
     public class PubSubEvent<T>
     {
