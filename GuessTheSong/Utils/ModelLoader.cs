@@ -19,37 +19,33 @@ namespace GuessTheSong.Utils
 
         public Genres getGenre(string id)
         {
-            Dictionary<string, string> result = new Dictionary<string, string>();
             string query = "SELECT name FROM genres WHERE genre_id = " + id;
-            result = DatabaseHandler.execute(query);
-            Genres genres = new Genres(result.name);
-            return genres;
+            Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] { "name" }, query);
+            Genres genre = new Genres((string)result["name"]);
+            return genre;
         }
 
         public Lyrics getLyrics(string id)
         {
-            Dictionary<string, string> result = new Dictionary<string, string>();
             string query = "SELECT lyric_text FROM lyrics WHERE lyric_id = " + id;
-            result = DatabaseHandler.execute(query);
-            Lyrics lyrics = new Lyrics(result.name);
+            Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] { "lyric_text" }, query);
+            Lyrics lyrics = new Lyrics((string)result["lyric_text"]);
             return lyrics;
         }
 
         public Players getPlayers(string id)
         {
-            Dictionary<string, string> result = new Dictionary<string, string>();
             string query = "SELECT username FROM players WHERE player_id = " + id;
-            result = DatabaseHandler.execute(query);
-            Players players = new Players(result.username, result.playerPassword);
+            Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] { "username" }, query);
+            Players players = new Players((string) result["username"]);
             return players;
         }
 
         public Scores getScore(string id)
         {
-            Dictionary<string, string> result = new Dictionary<string, string>();
-            string query = "SELECT player_score FROM scores WHERE player_id = " + id;
-            result = DatabaseHandler.execute(query);
-            Scores scores = new Scores(result.playerScore);
+            string query = $"SELECT COUNT(player_score) AS tot_player_score  FROM scores WHERE player_id = {id}";
+            Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] {"tot_player_score"}, query);
+           // Scores scores = new Scores(result[""]);
             return scores;
         }
 
@@ -57,7 +53,7 @@ namespace GuessTheSong.Utils
         {
             Dictionary<string, string> result = new Dictionary<string, string>();
             string query = "SELECT title, artist_id, genre_id FROM songs WHERE song_id = " + id;
-            result = DatabaseHandler.execute(query);
+            result = DatabaseConnectionManager.execute(query);
             Songs song = new Songs(result.songTitle, result.artistId, result.genreId);
             return song;
         }
@@ -72,19 +68,19 @@ namespace GuessTheSong.Utils
             {
                 query = "INSERT INTO scores(player_score) VALUES(0)";
             }
-            DatabaseHandler.execute(query);
+            DatabaseConnectionManager.execute(query);
         }
 
         public void AddPlayer(string username, string password)
         {
             string query = $"INSERT INTO players (username,player_password) VALUES ('{username}','{password}')";
-            DatabaseHandler.execute(query);
+            DatabaseConnectionManager.execute(query);
         }
 
         public void RemovePlayer(string username)
         {
             string query = "DELETE FROM players WHERE username = " + username;
-            DatabaseHandler.execute(query);
+            DatabaseConnectionManager.execute(query);
          }
 
 
