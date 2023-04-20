@@ -23,11 +23,11 @@ namespace GuessTheSong.Utils
        }
 
        public Genres getGenre(String id){
-       Dictionary<string, string> result = new Dictionary<string, string>();
-        String query = "SELECT name FROM artists WHERE artist_id = " + id;
-        result = DatabaseHandler.execute(query);
-        Artist artist = new Artist(result.id, result.name)
-        return artist
+            Dictionary<string, string> result = new Dictionary<string, string>();
+            String query = "SELECT name FROM artists WHERE artist_id = " + id;
+            result = DatabaseHandler.execute(query);
+            Genres genres = new Genres(result.name);
+            return genres;
        }
 
         public Lyrics getLyrics(String id)
