@@ -1,3 +1,4 @@
+
 :root {
     --san-marino: #5c74b3;
     --revolver: #1b132c;
@@ -8,5 +9,6 @@
     --affair: #7c4382;
     --bossanova: #433366;
     --chambray: #3c508c;
+     font-family : 'Comic Sans MS';
     --edgeRounding: 20px;
 }

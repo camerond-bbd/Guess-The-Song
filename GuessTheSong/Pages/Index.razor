@@ -1,28 +1,27 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Guess The Game</PageTitle>
+<div class="page">
+    <h1 class="title">Guess The Song!</h1>
 
-<h1>Hello, world!</h1>
+    <img class="image" src="images/logo.svg" alt="logo" />
 
-Welcome to your new app.
+    <section class="button-section"> 
+    <NavLink class="nav-link" href="sign-in">
+    <button class="button" > Login </button>
+    </NavLink>
 
-        <NavLink class="nav-link" href="sign-up">
-            <button > Register </button>
-            </NavLink>
+    <NavLink class="nav-link" href="sign-up">
+    <button class="button"> Register </button>
+    </NavLink >
+    </section>
+
+</div>
 
 <p>@Name</p>
 <GuessTheSong.components.SmallProfileDisplay></GuessTheSong.components.SmallProfileDisplay>
 <GuessTheSong.components.Test></GuessTheSong.components.Test>
 <GuessTheSong.components.ScoreDisplay></GuessTheSong.components.ScoreDisplay>
 
-@code {
-    private bool collapseNavMenu = true;
-
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-    }
-}
 
 
