@@ -9,7 +9,20 @@ namespace GuessTheSong.Pages
     {
         [Parameter]
         public int Id { get; set; }
+        
+        public string Name { get; set; } = "";
+
+        public int Score { get; set; }
+
+        protected override void OnParametersSet()
+        {
+            base.OnParametersSet();
+            Players p = ModelLoader.getPlayers(Id);
+            Name = p.username;
+        }
+        
         public Players loggedinUser { get; set; }
+
         public Profile()
         {
             loggedinUser = new Players();
@@ -20,6 +33,7 @@ namespace GuessTheSong.Pages
             loggedinUser = ModelLoader.getPlayers(Id);
             //PubSubManager.Publish<PopupMessage.errorObject>("displayErrorMessage", new PopupMessage.errorObject(errorMessage, displayError, () => { }));
         }
+
 
         public void goToGameClick()
         {
