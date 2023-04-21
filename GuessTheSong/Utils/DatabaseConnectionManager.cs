@@ -113,7 +113,6 @@ namespace GuessTheSong.Utils
         {
             List<int> list = new List<int>();
             conn.Open();
-            int rowCount = 0;
             SqlCommand cmd = new SqlCommand(Query, conn);
 
             SqlDataReader reader = cmd.ExecuteReader();
