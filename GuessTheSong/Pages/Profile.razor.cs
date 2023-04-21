@@ -13,15 +13,22 @@ namespace GuessTheSong.Pages
         public string Name { get; set; } = "";
 
         public int Score { get; set; }
+
+        protected override void OnParametersSet()
+        {
+            base.OnParametersSet();
+            Players p = ModelLoader.getPlayers(Id);
+            Name = p.username;
+        }
         public Profile()
         {
 
-            Players player = ModelLoader.getPlayers(Id);
+/*            
             Scores playerScores = ModelLoader.getScore(Id);
 
-            Name = player.username;
+           
 
-            Score = playerScores.player_score;
+            Score = playerScores.player_score;*/
 
         }
     }
