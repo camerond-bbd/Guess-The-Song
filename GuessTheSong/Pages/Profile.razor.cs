@@ -1,6 +1,7 @@
 using GuessTheSong.components;
 using GuessTheSong.Utils;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Routing;
 using SongGame.Models;
 
 namespace GuessTheSong.Pages
@@ -38,7 +39,7 @@ namespace GuessTheSong.Pages
 
         public void goToGameClick()
         {
-
+            Navigation.NavigateTo($"/GamePage/{loggedinUser.player_id}");
         }
     }
 }

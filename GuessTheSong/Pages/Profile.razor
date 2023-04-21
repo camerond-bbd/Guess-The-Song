@@ -1,11 +1,13 @@
 @page "/Profile/{Id:int}"
-<PageTitle>Profile</PageTitle>
+@inject NavigationManager Navigation
 
+<PageTitle>Profile</PageTitle>
 <div class="page">
     <h1 class="greeting">Hi @Name</h1>
     <br/>
 <div class="pageContainer">
         <GuessTheSong.components.ScoreDisplay Score=@Score></GuessTheSong.components.ScoreDisplay>
+        <button class="button" @onclick="goToGameClick"> Go To Game </button>
         <NavLink class="nav-link" href="/">
             <button class="button"> Back To Home </button>
         </NavLink>

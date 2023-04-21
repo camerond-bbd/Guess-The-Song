@@ -51,7 +51,10 @@ namespace GuessTheSong.Utils
             Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] {"tot_player_score"}, query)!;
             Scores scores = new Scores();
             scores.player_id = player_id;
-            scores.player_score = (int)result["tot_player_score"];
+            if (result["tot_player_score"] == DBNull.Value)
+                scores.player_score = 0;
+            else
+                scores.player_score = (int)result["tot_player_score"];
             return scores;
         }
 

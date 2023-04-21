@@ -1,121 +1,115 @@
-#song-options {
-      height: 500px;
-      margin-top: 10%;
-      background: black;
-      display: flex;
-      align-content: center;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+.song-options {
+    height: 500px;
+    margin-top: 10%;
+    background: black;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
-
- 
-
-#song-options-label {
-      margin-bottom: 20px;
-      color:white;
-}
-
- 
-
-#grey-box {
-      background-color: grey;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      padding: 20px;
-      width: 90%;
-      height: 80%;
-      margin: 20px auto;
-}
-
- 
-
-.song-option-element {
-      border-radius: 10px;
-      background-color: white;
-      width: 30%;
-      height: 95%;
-      margin-bottom: 10px;
-}
-
- 
-
-@media (max-width: 768px) {
-      .box-element
-
-{
-        width: 100%;
      
+
+.song-options-label{
+    margin-bottom: 20px;
+    color:white;
 }
 
+ 
+
+.grey-box {
+    background-color: grey;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    width: 90%;
+    height: 80%;
+    margin: 20px auto;
+}
+
+ 
+
+.song-option-element{
+    border-radius: 10px;
+    background-color: white;
+    width: 30%;
+    height: 95%;
+    margin-bottom: 10px;
+}
+
+ 
+
+@media(max-width: 768px) {
+    .box-element
+    {
+        width: 100%;
+    }
 }
 
  
 /*****css for header**********/
 #header {
-      background-color: black;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      align-items: center;
-      flex-wrap: wrap;
-      padding: 10px;
-      border-radius: 5px;
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+    border-radius: 5px;
 }
 
  
 
 .label-left, .label-right {
-      flex: 1;
-      text-align: center;
-       color: white;
+    flex: 1;
+    text-align: center;
+    color: white;
 }
 
  
 
 .center-container {
-      flex: 1;
-      text-align: center;
+    flex: 1;
+    text-align: center;
 }
 
  
 
 .score-container {
-      background-color: grey;
-      padding: 1px;
-      text-align: center;
-      width: 300px;
+    background-color: grey;
+    padding: 1px;
+    text-align: center;
+    width: 300px;
 }
 
  
 
 .score-label {
-      margin: 0;
-      color:white;
+    margin: 0;
+    color:white;
 }
 
  
 
 #score-divider {
-      border: 1px solid black;
-      margin: 10px 0;
+    border: 1px solid black;
+    margin: 10px 0;
 }
 
  
 
 .score-display {
-      font-size: 36px;
-      font-weight: bold;
-      color: white;
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
 }
 
  
 
-@media (max-width: 768px) {
-      .main-container
-
-{
+@media(max-width: 768px) {
+.main-container{
         flex-direction: column;
      
 }
