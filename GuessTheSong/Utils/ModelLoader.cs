@@ -59,6 +59,11 @@ namespace GuessTheSong.Utils
             return scores;
         }
 
+        static public int[] getAllSongIds()
+        {
+           return DatabaseConnectionManager.getIDList("SELECT song_id FROM songs");
+        }
+
         static public Songs getSongs(int id)
         {
             string query = $"SELECT title, artist_id, genre_id FROM songs WHERE song_id = {id}";
@@ -141,5 +146,8 @@ namespace GuessTheSong.Utils
             Out.song.title = (string)result["title"];
             return Out;
         }
+
+
+
     }
 }
