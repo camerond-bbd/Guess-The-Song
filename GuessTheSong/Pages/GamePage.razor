@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="label-right">
-        <h3 id="name-label"><p>Username:</p>@Name</h3>
+        <h3 id="name-label">Username:@player.username</h3>
     </div>
 </div>
 
@@ -23,24 +23,11 @@
 <div id="song-options">
     <h3 id="song-options-label">Pick your option</h3>
     <div id="grey-box">
-        <div id="song-option-box">
-  <h2>Song</h2>
-  <div class="divider"></div>
-  <p>Artist</p>
-  <div class="divider"></div>
-  <p>Lyrics</p>
-</div><div id="song-option-box">
-  <h2>Song</h2>
-  <div class="divider"></div>
-  <p>Artist</p>
-  <div class="divider"></div>
-  <p>Lyrics</p>
-</div><div id="song-option-box">
-  <h2>Song</h2>
-  <div class="divider"></div>
-  <p>Artist</p>
-  <div class="divider"></div>
-  <p>Lyrics</p>
-</div>
+        @for (int i = 0; i < 3; i++)
+        {
+            
+            <GuessTheSong.components.OptionsDisplay ></GuessTheSong.components.OptionsDisplay>
+        }
+        
     </div>
 </div>

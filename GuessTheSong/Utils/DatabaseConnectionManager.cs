@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System.Data;
+using System.Data.SqlClient;
 using System.Reflection.PortableExecutable;
 
 namespace GuessTheSong.Utils
@@ -106,6 +107,32 @@ namespace GuessTheSong.Utils
             conn.Close();
 
             return rowCount;
+        }
+
+        public static int[] getIDList(string Query)
+        {
+            List<int> list = new List<int>();
+            conn.Open();
+            int rowCount = 0;
+            SqlCommand cmd = new SqlCommand(Query, conn);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                conn.Close();
+                return new int[] {};
+            }
+
+
+            while (reader.Read())
+            {
+                list.Add((int)reader.GetValue(0));
+            }
+            reader.Close();
+            conn.Close();
+
+            return list.ToArray();
         }
     }
 }

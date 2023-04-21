@@ -9,7 +9,7 @@ namespace GuessTheSong.Pages
         [Parameter]
         public int Id { get; set; }
 
-        public Players player { get; set; }
+        public Players player { get; set; } = new Players();
         public string Name { get; set; } = "";
         public int Score { get; set; }
         protected override void OnParametersSet()
@@ -20,6 +20,11 @@ namespace GuessTheSong.Pages
             Name = player.username;
 
             Score = playerScore.player_score;
+        }
+
+        public GamePage()
+        {
+            
         }
     }
 }
