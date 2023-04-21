@@ -1,4 +1,4 @@
-﻿using GuessTheSong.components;
+using GuessTheSong.components;
 using GuessTheSong.Utils;
 using Microsoft.AspNetCore.Components;
 using SongGame.Models;
