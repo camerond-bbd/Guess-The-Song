@@ -29,8 +29,6 @@ namespace GuessTheSong.Pages
         public Profile()
         {
             loggedinUser = new Players();
-            string errorMessage = "User not found";
-            bool displayError = true;
             if (Id == 0)
                 return;
             loggedinUser = ModelLoader.getPlayers(Id);
