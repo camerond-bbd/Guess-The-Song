@@ -17,8 +17,11 @@ namespace GuessTheSong.Pages
         protected override void OnParametersSet()
         {
             base.OnParametersSet();
-            Players p = ModelLoader.getPlayers(Id);
-            Name = p.username;
+            Players player = ModelLoader.getPlayers(Id);
+            Scores playerScore = ModelLoader.getScore(Id);
+            Name = player.username;
+
+            Score = playerScore.player_score;
         }
         
         public Players loggedinUser { get; set; }

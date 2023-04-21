@@ -47,7 +47,7 @@ namespace GuessTheSong.Utils
 
         static public Scores getScore(int player_id)
         {
-            string query = $"SELECT COUNT(player_score) AS tot_player_score FROM scores WHERE player_id = {player_id}";
+            string query = $"SELECT SUM(player_score) AS tot_player_score FROM scores WHERE player_id={player_id}";
             Dictionary<string, object> result = DatabaseConnectionManager.doQuery(new string[] {"tot_player_score"}, query)!;
             Scores scores = new Scores();
             scores.player_id = player_id;
