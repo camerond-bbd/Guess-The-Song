@@ -1,3 +1,4 @@
+using GuessTheSong.components;
 using SongGame.Models;
 
 namespace GuessTheSong.Utils
@@ -127,6 +128,18 @@ namespace GuessTheSong.Utils
             returnMe.player_id = (int)result["Id"];
             returnMe.player_password = (string)result["password"];
             return returnMe; 
+        }
+
+        static public OptionsDisplay.OptionsDisplayDataPass getIncorrectSongs(int Id)
+        {
+            string query = $"SELECT s.title, a.name, g.name FROM songs s, artists a, genres g WHERE s.song_id = {Id} AND a.artist_id = s.artist_id AND g.genre_id = s.genre_id";
+            string[] fields = new string[] { "title, artist, genre" };
+            Dictionary<string, object> result = DatabaseConnectionManager.doQuery(fields, query)!;
+            OptionsDisplay.OptionsDisplayDataPass Out = new OptionsDisplay.OptionsDisplayDataPass();
+            Out.artist.name = (string)result["artist"];
+            Out.genre.name = (string)result["genre"];
+            Out.song.title = (string)result["title"];
+            return Out;
         }
     }
 }
