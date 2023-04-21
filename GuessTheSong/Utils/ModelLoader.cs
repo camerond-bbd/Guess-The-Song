@@ -141,5 +141,15 @@ namespace GuessTheSong.Utils
             Out.song.title = (string)result["title"];
             return Out;
         }
+
+        static public Lyrics getSongLyrics(int Id)
+        {
+            Lyrics returnLyrics = new Lyrics();
+            string query = $"SELECT lyric_text FROM lyrics WHERE lyric_id = {Id}";
+            string[] fields = new string[] { "lyrics" };
+            Dictionary<string, object> result = DatabaseConnectionManager.doQuery(fields, query)!;
+            returnLyrics.lyric_text = (string)result["lyric_text"];
+            return returnLyrics;
+        }
     }
 }
