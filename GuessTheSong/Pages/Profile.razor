@@ -1,4 +1,4 @@
-@page "/Profile/{Id:int}"
+@page "/Profile/{ID}"
 <PageTitle>Profile</PageTitle>
 
 <div class="page">
@@ -10,10 +10,13 @@
     <p>You are scoring more than of users</p>
     <button>click me</button>
     <section class="button-section">
-        <NavLink class="nav-link" href="/">
-            <button class="button"> Back To Home </button>
-        </NavLink>
+        <button @onclick="goToGameClick">Go to game:</button>
     </section>
 </div>
     <GuessTheSong.components.PopupMessage></GuessTheSong.components.PopupMessage>
 </div>
+
+@code {
+    [Parameter]
+    public int ID { get; set; }
+}
