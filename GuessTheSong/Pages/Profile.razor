@@ -1,23 +1,33 @@
 @page "/Profile/{Id:int}"
 <PageTitle>Profile</PageTitle>
-<div class="page">
-    <h1 class="title">Hi Name</h1>
 
+<div class="page">
+    <h1 class="greeting">Hi @Name</h1>
+    <br/>
+<div class="pageContainer">
     <div class="progressContainer">
-        <div class="progressBar"></div>
+        <div class="progressBar" style="width=@count"></div>
     </div>
     <p>Your total Score</p>
+    <p>@Id</p>
 
     <p>You are scoring more than of users</p>
+    <button @onclick="onCount">click me</button>
     <section class="button-section">
-        <NavLink class="nav-link" href="sign-in">
-            <button class="button"> Login </button>
-        </NavLink>
-
-        <NavLink class="nav-link" href="sign-up">
-            <button class="button"> Register </button>
+        <NavLink class="nav-link" href="/">
+            <button class="button"> Back To Home </button>
         </NavLink>
     </section>
-
+</div>
     <GuessTheSong.components.PopupMessage></GuessTheSong.components.PopupMessage>
 </div>
+
+@code{
+    int count = 0;
+
+    public void onCount()
+    {
+        count += 10;
+
+    }
+}

@@ -10,7 +10,7 @@ namespace GuessTheSong.Utils
         static DatabaseConnectionManager()
         {
             //create connection
-            string connetionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=gameDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadOnly;MultiSubnetFailover=True";
+            string connetionString = "Data Source=PALESAM\\SQLEXPRESS;Initial Catalog=gameDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadOnly;MultiSubnetFailover=True";
             conn = new SqlConnection(connetionString);
         }
 
