@@ -10,7 +10,7 @@ namespace GuessTheSong.Utils
         static DatabaseConnectionManager()
         {
             //create connection
-            string connetionString = "Data Source=PALESAM\\SQLEXPRESS;Initial Catalog=gameDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadOnly;MultiSubnetFailover=True";
+            string connetionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=gameDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadOnly;MultiSubnetFailover=True";
             conn = new SqlConnection(connetionString);
         }
 
@@ -32,7 +32,7 @@ namespace GuessTheSong.Utils
             return output;
         }
 
-        public static Dictionary<string,object>? doQuery(string[] Fields, string Query)
+        public static Dictionary<string, object>? doQuery(string[] Fields, string Query)
         {
             Dictionary<string, object> dictReturn = new Dictionary<string, object>();
             conn.Open();
@@ -46,7 +46,7 @@ namespace GuessTheSong.Utils
             {
                 string key = Fields[i];
                 object value = reader.GetValue(i);
-                dictReturn.Add(key, value) ;
+                dictReturn.Add(key, value);
             }
             reader.Close();
             conn.Close();
@@ -96,7 +96,7 @@ namespace GuessTheSong.Utils
                 conn.Close();
                 return 0;
             }
-                
+
 
             while (reader.Read())
             {

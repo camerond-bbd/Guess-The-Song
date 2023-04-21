@@ -1,4 +1,4 @@
-@page "/Profile/{ID}"
+@page "/Profile/{Id:int}"
 <PageTitle>Profile</PageTitle>
 
 <div class="page">
@@ -15,8 +15,3 @@
 </div>
     <GuessTheSong.components.PopupMessage></GuessTheSong.components.PopupMessage>
 </div>
-
-@code {
-    [Parameter]
-    public int ID { get; set; }
-}
