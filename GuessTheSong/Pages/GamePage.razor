@@ -1,5 +1,5 @@
 @inject NavigationManager Navigation
-@page "/GamePage/{UserID:int}"
+@page "/GamePage/{Id:int}"
 <div id="header">
     <div class="label-left">
         <h3>Guess the song</h3>
@@ -7,12 +7,12 @@
     <div class="center-container">
         <div class="score-container">
             <h2 class="score-label">Your score</h2>
-            <hr id="score divider">
-            <div class="score-display">21</div>
+            <hr id = "score divider">
+            <div class="score-display">@Score</div>
         </div>
     </div>
     <div class="label-right">
-        <h3 id="name-label"><p>Username: </p>name</h3>
+        <h3 id="name-label"><p>Username:</p>@Name</h3>
     </div>
 </div>
 
@@ -23,8 +23,24 @@
 <div id="song-options">
     <h3 id="song-options-label">Pick your option</h3>
     <div id="grey-box">
-        <div class="song-option-element"></div>
-        <div class="song-option-element"></div>
-        <div class="song-option-element"></div>
+        <div id="song-option-box">
+  <h2>Song</h2>
+  <div class="divider"></div>
+  <p>Artist</p>
+  <div class="divider"></div>
+  <p>Lyrics</p>
+</div><div id="song-option-box">
+  <h2>Song</h2>
+  <div class="divider"></div>
+  <p>Artist</p>
+  <div class="divider"></div>
+  <p>Lyrics</p>
+</div><div id="song-option-box">
+  <h2>Song</h2>
+  <div class="divider"></div>
+  <p>Artist</p>
+  <div class="divider"></div>
+  <p>Lyrics</p>
+</div>
     </div>
 </div>

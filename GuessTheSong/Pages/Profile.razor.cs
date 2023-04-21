@@ -15,31 +15,21 @@ namespace GuessTheSong.Pages
 
         public int Score { get; set; }
 
+        public Players player { get; set; } = new Players();
         protected override void OnParametersSet()
         {
             base.OnParametersSet();
-            Players player = ModelLoader.getPlayers(Id);
+            player = ModelLoader.getPlayers(Id);
             Scores playerScore = ModelLoader.getScore(Id);
             Name = player.username;
 
             Score = playerScore.player_score;
         }
-        
-        public Players loggedinUser { get; set; }
-
-        public Profile()
-        {
-            loggedinUser = new Players();
-            if (Id == 0)
-                return;
-            loggedinUser = ModelLoader.getPlayers(Id);
-            //PubSubManager.Publish<PopupMessage.errorObject>("displayErrorMessage", new PopupMessage.errorObject(errorMessage, displayError, () => { }));
-        }
 
 
         public void goToGameClick()
         {
-            Navigation.NavigateTo($"/GamePage/{loggedinUser.player_id}");
+            Navigation.NavigateTo($"/GamePage/{Id}");
         }
     }
 }
