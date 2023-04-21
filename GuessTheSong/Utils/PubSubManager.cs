@@ -1,4 +1,4 @@
-﻿namespace HowToBlazor.Utils
+﻿namespace GuessTheSong.Utils
 {
     public static class PubSubManager
     {
@@ -26,6 +26,15 @@
             else
             {
                 dictPubSub.Add(typeof(T), new PubSub<T>(Message, new PubSubEvent<T>(methodToCall)));
+            }
+        }
+
+        public static void UnSubscribe<T>(string Message, PubSubEvent<T>.Event<T> methodToCall)
+        {
+            if (dictPubSub.ContainsKey(typeof(T)))
+            {
+                PubSub<T> pubSub = (PubSub<T>)dictPubSub[typeof(T)];
+                pubSub.UnSubscribe(Message, new PubSubEvent<T>(methodToCall));
             }
         }
     }

@@ -1,0 +1,23 @@
+﻿.page {
+    font-family: 'Comic Sans MS';
+    background-color: #5c71b2;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.progressContainer {
+    width: 100px;
+    height: 10px;
+    background-color: white
+}
+
+.progressBar {
+    width: 5px;
+    height: 10px;
+    background-color: darkred
+}

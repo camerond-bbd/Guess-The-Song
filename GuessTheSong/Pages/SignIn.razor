@@ -1,23 +1,22 @@
 ﻿@page "/sign-in"
 
 <PageTitle>Sign In</PageTitle>
+@inject NavigationManager Navigation
 
- 
-    <main class="page">
+<main class="page">
     <h2>Sign In</h2>
     <h3>Please enter sign in details</h3>
-    <form class="form" method="post" action=''>
-      <div class="login-section" >
-          
+    <div class="login-section">
+
         <label for="user-name">Enter your username: </label>
-        <input id="user-name" class="input" name="user-name" type="text" required />
-       
+        <input id="user-name" class="input" name="user-name" type="text" @bind="@username" required />
+
         <label for="new-password">Enter your password: </label>
-            <input id="new-password" class="input" name="new-password" type="password" required />
-        
-      </div>
-      <input class="button" type="submit" value="Submit"/>
-      <input class="button" type="submit" value="Back" onClick="history.go(-1);">
-    </form>
-    <GuessTheSong.components.PopupMessage isDisplayingMessage="true"></GuessTheSong.components.PopupMessage>
-    </main>   
+        <input id="new-password" class="input" name="new-password" type="password" @bind="@password" required />
+
+    </div>
+
+    <button class="button" @onclick="signInClick">Login</button>
+    <input class="button" type="submit" value="Back" onClick="history.go(-1);">
+    <GuessTheSong.components.PopupMessage errorMessage="@errorMessage" isDisplayingMessage="@displayError"></GuessTheSong.components.PopupMessage>
+</main>   

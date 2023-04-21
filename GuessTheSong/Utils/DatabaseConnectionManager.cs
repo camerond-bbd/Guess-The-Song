@@ -1,4 +1,5 @@
 ﻿using System.Data.SqlClient;
+using System.Reflection.PortableExecutable;
 
 namespace GuessTheSong.Utils
 {
@@ -9,7 +10,7 @@ namespace GuessTheSong.Utils
         static DatabaseConnectionManager()
         {
             //create connection
-            string connetionString = "Data Source=PALESAM\\SQLEXPRESS;Initial Catalog = gameDB;Integrated Security = true";
+            string connetionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=gameDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadOnly;MultiSubnetFailover=True";
             conn = new SqlConnection(connetionString);
         }
 
@@ -25,23 +26,29 @@ namespace GuessTheSong.Utils
             {
                 output = output + reader.GetValue(0) + reader.GetValue(0);
             }
+            reader.Close();
             conn.Close();
 
             return output;
         }
 
-        public static Dictionary<string,object> doQuery(string[] Fields, string Query)
+        public static Dictionary<string,object>? doQuery(string[] Fields, string Query)
         {
             Dictionary<string, object> dictReturn = new Dictionary<string, object>();
             conn.Open();
             SqlCommand cmd = new SqlCommand(Query, conn);
 
             SqlDataReader reader = cmd.ExecuteReader();
-                
-            for (int i = 0; i < Fields.Length; i++)
+            if (!reader.HasRows)
+                return null;
+            reader.Read();
+            for (int i = 0; (i < Fields.Length); i++)
             {
-                dictReturn.Add(Fields[i], reader.GetValue(i));
+                string key = Fields[i];
+                object value = reader.GetValue(i);
+                dictReturn.Add(key, value) ;
             }
+            reader.Close();
             conn.Close();
             return dictReturn;
         }
@@ -71,9 +78,34 @@ namespace GuessTheSong.Utils
                 }
                 lstDicts.Add(record);
             }
-
+            reader.Close();
             conn.Close();
             return lstDicts.ToArray();
+        }
+
+        public static int rowCount(string Query)
+        {
+            conn.Open();
+            int rowCount = 0;
+            SqlCommand cmd = new SqlCommand(Query, conn);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                conn.Close();
+                return 0;
+            }
+                
+
+            while (reader.Read())
+            {
+                rowCount++;
+            }
+            reader.Close();
+            conn.Close();
+
+            return rowCount;
         }
     }
 }

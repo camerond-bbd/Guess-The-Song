@@ -14,10 +14,13 @@
     display:none;
 }
 
-.messageHolder{
-    display:flex;
-    width:40vw;
+.messageHolder {
+    display: flex;
+    width: 40vw;
     aspect-ratio: 1/1;
-    justify-content:center;
-    align-items:center;
+    justify-content: center;
+    align-items: center;
+    background-color: #232323;
+    color: var(--chambrayLight);
+    border-radius: var(--edgeRounding);
 }
