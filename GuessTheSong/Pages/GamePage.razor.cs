@@ -9,6 +9,7 @@ namespace GuessTheSong.Pages
         [Parameter]
         public int Id { get; set; }
 
+        public GameManager Manager { get; set; } = new GameManager();
         public Players player { get; set; } = new Players();
         public string Name { get; set; } = "";
         public int Score { get; set; }

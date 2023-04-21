@@ -1,6 +1,9 @@
 ﻿using GuessTheSong.Utils;
 using Microsoft.AspNetCore.Components;
 using SongGame.Models;
+using static System.Formats.Asn1.AsnWriter;
+using System.Numerics;
+using System.Xml.Linq;
 
 namespace GuessTheSong.components
 {
@@ -33,8 +36,14 @@ namespace GuessTheSong.components
         }
 
         public OptionsDisplay() {
-            if (songID != 0)
-                this.data = ModelLoader.getIncorrectSongs(songID);
+
+        }
+
+        protected override void OnParametersSet()
+        {
+            //base.OnParametersSet();
+           // if (songID != 0)
+              //  this.data = ModelLoader.getIncorrectSongs(songID);
             //PubSubManager.Subscribe<OptionsDisplayDataPass>()
         }
     }

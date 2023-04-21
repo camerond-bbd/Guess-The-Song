@@ -12,16 +12,18 @@
         </div>
     </div>
     <div class="label-right">
-        <h3 id="name-label">Username:@player.username</h3>
+        <h3>@Name</h3>
     </div>
 </div>
-
+<div class="centerText">
+    <p>@Manager.Lyrics.lyric_text;</p>
+</div>
 <div id="song-options">
     <h3 id="song-options-label">Pick your option</h3>
     <div id="grey-box">
-        @for (int i = 0; i < 3; i++)
+        @for (int i = 0; i < Manager.songList.Length; i++)
         {
-            <GuessTheSong.components.OptionsDisplay ></GuessTheSong.components.OptionsDisplay>
+            <GuessTheSong.components.OptionsDisplay songID="Manager.songList[i]"></GuessTheSong.components.OptionsDisplay>
         }
         
     </div>

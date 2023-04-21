@@ -153,7 +153,7 @@ namespace GuessTheSong.Utils
             string query = $"SELECT lyric_text FROM lyrics WHERE lyric_id = {Id}";
             string[] fields = new string[] { "lyrics" };
             Dictionary<string, object> result = DatabaseConnectionManager.doQuery(fields, query)!;
-            returnLyrics.lyric_text = (string)result["lyric_text"];
+            returnLyrics.lyric_text = (string)result["lyrics"];
             return returnLyrics;
         }
     }

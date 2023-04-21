@@ -94,11 +94,16 @@
        text-align: center;
        width: 300px;
   }
-
-   .score-label {
-       margin: 0;
-       color: white;
-  }
+.centerText{
+    display:flex;
+    width:100vw;
+    justify-content:center;
+    align-items:center;
+}
+.score-label {
+    margin: 0;
+    color: white;
+}
 
    #score-divider {
        border: 1px solid black;
