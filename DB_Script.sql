@@ -1,4 +1,3 @@
-
 CREATE DATABASE gameDB;
 GO 
 USE gameDB
@@ -122,6 +121,3 @@ INSERT INTO scores (player_id,player_score)
 VALUES(9,0)
 INSERT INTO scores (player_id,player_score)
 VALUES(10,90)
-
-
-
